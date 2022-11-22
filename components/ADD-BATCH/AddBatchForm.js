@@ -7,12 +7,46 @@ import {BiArrowBack} from 'react-icons/bi'
 const AddBatchForm = () => {
   const router = useRouter()
 
+  // Function to submit form data
+  const handlerFormSubmit = async (e) => {
+    e.preventDefault()
+    const data = {
+      batchName:"kbq nikomo",
+      batchId:"batch001",
+     startDate: new Date(),
+     endDate: "",
+     numberOfFishes: 300,
+     sales:[
+      
+     ],
+     expenditure:[
+      
+     ],
+     mortality:[
+      
+    ],
+
+    }
+    
+     const response = await fetch("/api/batch",{
+      method: "POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: (JSON.stringify(data))
+     })
+
+     console.log(response);
+  }
+
+ 
+
 
   return (
     <div>
       <BiArrowBack className={classes.back} onClick={() => router.back()}/>
       <h1 className={classes.addHeader}>Create New Batch</h1>
-      <form className={classes.addForm}>
+      <form className={classes.addForm} onSubmit={handlerFormSubmit}>
         <label htmlFor='batchnumber'> Batch Number</label>
         <input type='text' placeholder='Enter Batch Number' id='batchnumber' required/>
 
