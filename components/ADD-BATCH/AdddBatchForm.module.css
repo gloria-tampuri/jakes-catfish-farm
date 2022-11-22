@@ -1,0 +1,39 @@
+.addHeader{
+   margin: 2rem auto;
+   text-align: center;
+   text-transform: uppercase;
+}
+
+.back{
+    font-size: 2.2rem;
+    margin: 1rem 0 0 2rem ;
+}
+
+.addForm{
+    width: 90%;
+    margin: 0 auto;
+}
+.addForm label{
+    display: block;
+    margin-bottom: 0.3rem;
+}
+.addForm input{
+    width: 100%;
+    height: 53%;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    color: #DCD2D2;
+    background-color: #343A46;
+    margin-bottom: 1.5rem;
+}
+
+.addForm input::placeholder{
+    font-size: 0.8rem;
+}
+
+.addbutton{
+    width: fit-content;
+    margin: 0 auto;
+}

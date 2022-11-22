@@ -1,0 +1,42 @@
+.AddSaleForm{
+    width: 90%;
+    margin: 1rem auto;
+}
+
+.SaleForm{
+    width:100%;
+    margin: 1rem 0;
+    background-color: #343A46;
+    padding: 2rem 1rem;
+    border-radius: 15px;
+}
+
+.SaleForm input{
+    display: block;
+    width: 100%;
+    height: 53%;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    color: #DCD2D2;
+    background-color: #23272F;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.SaleForm input::placeholder{
+    color: white;
+}
+
+.addSale{
+  text-align: right;
+}
+.addSale button{
+    background-color: var(--prime-color);
+    border: none;
+    width: 50%;
+    padding: 0.5rem 0;
+    color: white;
+    border-radius: 15px;
+}

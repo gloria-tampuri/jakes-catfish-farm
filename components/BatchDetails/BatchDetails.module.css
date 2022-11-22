@@ -1,0 +1,31 @@
+.back{
+    font-size: 2.2rem;
+    margin: 1rem 0 0 2rem ;
+}
+
+.header{
+   text-align: center}
+
+.actions{
+    margin: 2rem;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+   }
+
+   .actionbtn{
+    width: 40%;
+    background-color: var(--prime-color);
+    margin-right: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+    border-radius: 15px;
+    }
+
+    .edit{
+        margin: 2rem;
+        text-align: right;
+        color: var(--prime-color);
+        font-weight: 700;
+    }

@@ -1,0 +1,11 @@
+.action{
+    color: white;
+    background-color: var(--prime-color);
+    padding: 0.5rem 1rem ;
+    border-radius: 15px;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+

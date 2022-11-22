@@ -1,0 +1,24 @@
+.SalesList{
+  
+    width: 90%;
+    margin:4rem auto;
+}
+
+.saleshead{
+    display: flex;
+    justify-content: space-between;
+}
+
+.List{
+    margin-top: 2rem;
+}
+
+.salesection{
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #343A46;
+    padding:1rem;
+    border-radius: 15px;
+}

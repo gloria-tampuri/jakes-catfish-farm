@@ -1,0 +1,7 @@
+.header{
+    width: 100%;
+    font-size:1rem;
+    color:var(--prime-color);
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.4);
+    padding: 1rem 2rem;
+}

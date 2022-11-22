@@ -1,0 +1,8 @@
+.sumarryList li{
+list-style: none;
+margin-bottom: 0.5rem;
+}
+
+.sumarryList li span{
+    color: var(--prime-color);
+}
