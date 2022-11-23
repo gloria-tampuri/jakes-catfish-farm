@@ -3,11 +3,11 @@ import Link from 'next/link'
 import classes from './Batches.module.css'
 
 const batches=[
-    {batchId: '001', batchName:'Batch 1'},
-    {batchId: '002', batchName:'Batch 2'},
-    {batchId: '003', batchName:'Batch 3'},
-    {batchId: '004', batchName:'Batch 4'},
-    {batchId: '005', batchName:'Batch 5'}
+    {batchId: '1', batchName:'Batch 1'},
+    {batchId: '2', batchName:'Batch 2'},
+    {batchId: '3', batchName:'Batch 3'},
+    {batchId: '4', batchName:'Batch 4'},
+    {batchId: '5', batchName:'Batch 5'}
 
 ]
 

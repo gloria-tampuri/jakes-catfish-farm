@@ -14,11 +14,16 @@ const connectedDatabase = async () =>{
 export default async function(req,res){
 if(req.method === "POST"){
   const batchCollection = await connectedDatabase()
-   const result = await batchCollection.insertOne(req.body)
-   console.log(result);
-    res.status(201).json({message:"Posted new batch"})
+  const newData = {...req.body}
+  const result = await batchCollection.insertOne(newData)
+  res.status(201).json({message:"Posted new batch"})
 }
 else if(req.method === "GET"){
-    res.status(200).json({message:"Get all batches"})
+    const batchCollection = await connectedDatabase()
+    const result =  await batchCollection.find({}).toArray();
+    res.status(200).json({
+        status: 200,
+        data: result
+    })
 }
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { useRouter } from 'next/router'
 import classes from './AdddBatchForm.module.css'
 import Button from '../UI/Button'
@@ -7,15 +7,25 @@ import {BiArrowBack} from 'react-icons/bi'
 const AddBatchForm = () => {
   const router = useRouter()
 
+  const[batchName, setBatchName] = useState('')
+  const[batchId,SetBatchId]=useState(0)
+  const[startDate, setStartDate]= useState('')
+  const[numberofFishes, setNumberofFishes]=useState(0)
+  const[endDate, setEndDate]=useState('')
+
   // Function to submit form data
   const handlerFormSubmit = async (e) => {
+
+      setBatchName('')
+      SetBatchId('')
+
     e.preventDefault()
     const data = {
-      batchName:"kbq nikomo",
-      batchId:"batch001",
-     startDate: new Date(),
-     endDate: "",
-     numberOfFishes: 300,
+      batchName:  batchName,
+      batchId:batchId,
+     startDate:startDate,
+     endDate:endDate,
+     numberOfFishes:numberofFishes,
      sales:[
       
      ],
@@ -47,20 +57,20 @@ const AddBatchForm = () => {
       <BiArrowBack className={classes.back} onClick={() => router.back()}/>
       <h1 className={classes.addHeader}>Create New Batch</h1>
       <form className={classes.addForm} onSubmit={handlerFormSubmit}>
-        <label htmlFor='batchnumber'> Batch Number</label>
-        <input type='text' placeholder='Enter Batch Number' id='batchnumber' required/>
+        <label htmlFor='batchnumber'> Batch ID</label>
+        <input type='text' placeholder='Enter Batch Number' id='batchnumber' value={batchId} onChange={(e)=>SetBatchId(+e.target.value)}  required/>
 
         <label htmlFor='batchname'> Batch Name</label>
-        <input type='text' placeholder='Enter Batch Name' id='batchname' required/>
+        <input type='text' placeholder='Enter Batch Name' id='batchname' required value={batchName} onChange={(e)=>setBatchName(e.target.value)}   />
 
         <label htmlFor='fishnumber'> Number of Start Fishes </label>
-        <input type='number' placeholder='Enter Number of Start Fishes' id='fishnumber' required/>
+        <input type='number' placeholder='Enter Number of Start Fishes' id='fishnumber' required value={numberofFishes} onChange={(e)=>setNumberofFishes(+e.target.value)}  />
 
         <label htmlFor='startdate'>Start Date</label>
-        <input type='date' placeholder='Select Start Date' id='startdate' required/>
+        <input type='date' placeholder='Select Start Date' id='startdate' required value={startDate} onChange={(e)=>setStartDate(e.target.value)}  />
 
         <label htmlFor='Enddate'>End Date</label>
-        <input type='date' placeholder='Select Start Date' id='startdate'/>
+        <input type='date' placeholder='Select Start Date' id='startdate' value={endDate} onChange={(e)=>setEndDate(e.target.value)}  />
      <div className={classes.addbutton}> <Button onClick={() => router.back()} > ADD BATCH </Button></div>
 
       </form>
