@@ -7,6 +7,7 @@ const Summary = ({batch}) => {
   const[totalmortality,setTotalmortality] =useState(0)
   const[totalExpenditure, setTotalExpenditure] =useState(0)
   const[remainingFishes, setRemainingFishes] =useState(0)
+  const[profit, setProfit] =useState(0)
 
   useEffect(() =>{
     const allAmounts =batch?.sales?.map(sale => +sale.amount).reduce(
@@ -39,6 +40,11 @@ useEffect(()=>{
   setRemainingFishes(fishesLeft)
 },[batch,totalFishesSold,totalmortality])
 
+useEffect(()=>{
+  const profit =totalAmount-totalExpenditure
+  setProfit( profit)
+},[totalAmount,totalExpenditure])
+
 
   return (
     <div>
@@ -47,12 +53,15 @@ useEffect(()=>{
             <li>Batch Name: <span>{batch?.batchName}</span></li>
             <li>Start Date: <span>{batch?.startDate}</span></li>
             <li>Start Fingerlings Number: <span>{batch?.numberOfFishes}</span></li>
-            <li>Total Sales: <span>{totalAmount}</span></li>
             <li>Number of Fishes Sold: <span>{totalFishesSold}</span></li>
-            <li>Remaining Fishes: <span>{remainingFishes}</span></li>
-            <li>Mortality: <span>{totalmortality}</span></li>
+            <li>Total Sales: <span>{totalAmount}</span></li>
             <li>Total Expenditure: <span>{totalExpenditure}</span></li>
+            <li>Mortality: <span>{totalmortality}</span></li>
+            <li>Remaining Fishes: <span>{remainingFishes}</span></li>
         </ul>
+
+<div className={classes.profit}> <h3>{profit >0 ?'Profit :' : 'Loss :'}</h3> <h3>{profit}</h3> </div>
+       
     </div>
   )
 }
