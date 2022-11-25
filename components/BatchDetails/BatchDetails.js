@@ -34,5 +34,4 @@ const BatchDetails = () => {
     </div>
   )
 }
-
 export default BatchDetails

@@ -65,7 +65,7 @@ const AddBatchForm = () => {
       <h1 className={classes.addHeader}>Create New Batch</h1>
       <form className={classes.addForm} onSubmit={handlerFormSubmit}>
         <label htmlFor='batchnumber'> Batch ID</label>
-        <input type='text' placeholder='Enter Batch Number' id='batchnumber' value={batchId} onChange={(e)=>SetBatchId(+e.target.value)}  required/>
+        <input type='number' placeholder='Enter Batch Number' id='batchnumber' value={batchId} onChange={(e)=>SetBatchId(+e.target.value)}  required/>
 
         <label htmlFor='batchname'> Batch Name</label>
         <input type='text' placeholder='Enter Batch Name' id='batchname' required value={batchName} onChange={(e)=>setBatchName(e.target.value)}   />
