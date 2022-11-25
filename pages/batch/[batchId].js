@@ -6,8 +6,7 @@ import { useRouter } from 'next/router'
 const BatchPage = () => {
   const router =useRouter()
   const {batchId}=router.query;
-  console.log(batchId);
-  console.log(router);
+ 
   return (
     <div>
       <Header/>

@@ -13,22 +13,19 @@ const connectedDatabase = async () =>{
 
 export default async function(req,res){
   const {batchId}=req.query;
+ 
 
    if(req.method==='GET'){
     const batchCollection = await connectedDatabase()
    const foundBatch = await batchCollection.findOne({_id: ObjectId(batchId)})
-   console.log(foundBatch);
 
-   res.status(200).json({
-    status: 200,
-    data: foundBatch
-   })
+   res.status(200).json(foundBatch)
 
    }else if(req.method === 'PATCH'){
    
     const batchCollection = await connectedDatabase()
     const updatedBatch = await batchCollection.findOneAndUpdate(
-        {_id: ObjectId(batchId)},
+        {_id:  ObjectId(batchId)},
         {$push : {...req.body}
     })
 
@@ -40,7 +37,7 @@ export default async function(req,res){
 
    }else if (req.method==='DELETE'){
     const batchCollection = await connectedDatabase()
-    const foundBatch = await batchCollection.deleteOne({_id: ObjectId(batchId)})
+    const foundBatch = await batchCollection.deleteOne({batchId: batchId})
     
    res.status(200).json({
     status: 200,

@@ -1,19 +1,57 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import classes from './Summary.module.css'
 
-const Summary = () => {
+const Summary = ({batch}) => {
+  const[totalAmount, setTotalAmount] =useState(0)
+  const[totalFishesSold,setTotalFishesSold]=useState(0)
+  const[totalmortality,setTotalmortality] =useState(0)
+  const[totalExpenditure, setTotalExpenditure] =useState(0)
+  const[remainingFishes, setRemainingFishes] =useState(0)
+
+  useEffect(() =>{
+    const allAmounts =batch?.sales?.map(sale => +sale.amount).reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+    )
+    const allFishes =batch?.sales?.map(sale => +sale.numberOfFishes).reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+    )
+    const allMortality =batch?.mortality?.map(mortality => +mortality.number).reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+    )
+
+    const allExpenditure =batch?.expenditure?.map(expenditure => +expenditure.amount).reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+    )
+
+    setTotalAmount(allAmounts)
+    setTotalFishesSold(allFishes)
+      setTotalmortality(allMortality)
+      setTotalExpenditure(allExpenditure)
+
+  },[batch])
+
+useEffect(()=>{
+  const fishesLeft = batch?.numberOfFishes-totalFishesSold-totalmortality
+  setRemainingFishes(fishesLeft)
+},[batch,totalFishesSold,totalmortality])
+
+
   return (
     <div>
         <ul className={classes.sumarryList}>
-            <li>Batch Number: <span></span></li>
-            <li>Batch Name: <span></span></li>
-            <li>Start Date: <span></span></li>
-            <li>Start Fingerlings Number: <span></span></li>
-            <li>Total Sales: <span></span></li>
-            <li>Number of Fishes Sold: <span></span></li>
-            <li>Remaining Fishes: <span></span></li>
-            <li>Mortality: <span></span></li>
-            <li>Total Expenditure: <span></span></li>
+            <li>Batch Number: <span>{batch?.batchId}</span></li>
+            <li>Batch Name: <span>{batch?.batchName}</span></li>
+            <li>Start Date: <span>{batch?.startDate}</span></li>
+            <li>Start Fingerlings Number: <span>{batch?.numberOfFishes}</span></li>
+            <li>Total Sales: <span>{totalAmount}</span></li>
+            <li>Number of Fishes Sold: <span>{totalFishesSold}</span></li>
+            <li>Remaining Fishes: <span>{remainingFishes}</span></li>
+            <li>Mortality: <span>{totalmortality}</span></li>
+            <li>Total Expenditure: <span>{totalExpenditure}</span></li>
         </ul>
     </div>
   )

@@ -22,3 +22,29 @@
     padding:1rem;
     border-radius: 15px;
 }
+
+.mortalitysection{
+    /* margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #343A46;
+    padding:1rem;
+    border-radius: 15px; */
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #343A46;
+}
+
+
+.mortalitysection td, .mortalitysection th{
+  padding: 8px;
+  text-align: center;
+
+}
+.mortalitysection tbody tr:nth-child(odd){
+   background-color: #087da441;;
+
+}

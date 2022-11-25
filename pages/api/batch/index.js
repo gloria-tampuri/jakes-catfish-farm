@@ -21,9 +21,7 @@ if(req.method === "POST"){
 else if(req.method === "GET"){
     const batchCollection = await connectedDatabase()
     const result =  await batchCollection.find({}).toArray();
-    res.status(200).json({
-        status: 200,
-        data: result
-    })
+    // const batches =
+    res.status(200).json(result)
 }
 }

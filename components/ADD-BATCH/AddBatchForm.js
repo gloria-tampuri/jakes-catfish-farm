@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import classes from './AdddBatchForm.module.css'
 import Button from '../UI/Button'
 import {BiArrowBack} from 'react-icons/bi'
+import { setDate } from 'date-fns'
 
 const AddBatchForm = () => {
   const router = useRouter()
@@ -15,11 +16,17 @@ const AddBatchForm = () => {
 
   // Function to submit form data
   const handlerFormSubmit = async (e) => {
+    e.preventDefault()
 
       setBatchName('')
       SetBatchId('')
+      setStartDate('')
+      setNumberofFishes('')
+      setEndDate('')
 
-    e.preventDefault()
+   
+
+    
     const data = {
       batchName:  batchName,
       batchId:batchId,
@@ -45,8 +52,8 @@ const AddBatchForm = () => {
       },
       body: (JSON.stringify(data))
      })
-
-     console.log(response);
+     router.push('/')
+    
   }
 
  

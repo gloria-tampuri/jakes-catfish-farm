@@ -1,33 +1,56 @@
-import React from 'react'
+import React,{useCallback, useEffect, useState} from 'react'
+import { useRouter } from 'next/router'
+import useSWR from 'swr'
 import classes from './ExpenditureList.module.css'
+import { format } from 'date-fns'
+
+const fetcher = (...args) => fetch(...args).then(res => res.json())
+
 
 const ExpenditureList = () => {
+
+  const router = useRouter()
+
+  const[totalAmount, setTotalAmount] =useState(0)
+
+  const { data, error } = useSWR(`/api/batch/${router.query.batchId}`, fetcher,{refreshInterval: 1000})
+
+
+  useEffect(() =>{
+    const allAmounts = data?.expenditure?.map(expenditure => +expenditure.amount).reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+    )
+    setTotalAmount(allAmounts)
+  },[data])
+
   return (
     <div className={classes.ExpenditureList}>
     <div className={classes.Expenditurehead}>
       <h2>Total Expenditure</h2> 
-      <h2 className={classes.totalExpenditure}>56000</h2>
+      <h2 className={classes.totalExpenditure}>{totalAmount && totalAmount.toFixed(2)}</h2>
       </div>
 
       <div className={classes.List}>
-         <div className={classes.Expendituresection}>
-             <p>1/2/2020</p>
-             <p>Transport</p>
-             <p>300</p> 
-         </div>
 
-         <div className={classes.Expendituresection}>
-             <p>1/2/2020</p>
-             <p>Transport</p>
-             <p>300</p> 
-         </div>
+        <table className={classes.expendituresection}>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Expenditure Type</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+            {data && data.expenditure.map((expenditure,index)=> <tr  key={index}>
+                 <td>{format( new Date(expenditure.date), 'dd/MM/yy')}</td>
+                 <td>{expenditure.expenditureType}</td>
+                 <td>{expenditure.amount}</td>
 
-         <div className={classes.Expendituresection}>
-             <p>1/2/2020</p>
-             <p>Transport</p>
-             <p>300</p> 
-         </div>
-
+             </tr>
+               )}
+            </tbody>
+        </table>
          
     </div>
     </div>
