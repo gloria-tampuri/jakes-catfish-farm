@@ -1,14 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useCallback} from 'react'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import classes from './AddMortality.module.css'
 import { BiArrowBack } from 'react-icons/bi'
+import { ThemeContext } from '../../context/theme'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 
 const AddMortalityForm = () => {
     const router = useRouter()
+    const theme = useState(ThemeContext)
 
     const[date,setDate] =useState('')
     const[number, setNumber] =useState(0)
@@ -48,7 +50,7 @@ const AddMortalityForm = () => {
 
             <h2>Add Mortality</h2>
 
-            <form className={classes.MortalityForm} onSubmit={onSubmitMortalityForm}>
+            <form className={theme.theme==='light' ? classes.MortalityForm:classes.MortalityForm1} onSubmit={onSubmitMortalityForm}>
                 <input type='date' value={date} onChange={(e)=>{setDate(e.target.value)}} />
                 <input type='number' placeholder='Number' value={number} onChange={(e)=>{setNumber(e.target.value)}}/>
                 <div className={classes.addMortality}> <button>Add Expenditure</button> </div>

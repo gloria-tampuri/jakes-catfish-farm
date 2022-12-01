@@ -1,12 +1,14 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState, useContext} from 'react'
 import { useRouter } from 'next/router'
 import classes from './AdddBatchForm.module.css'
 import Button from '../UI/Button'
 import {BiArrowBack} from 'react-icons/bi'
 import useBatch from '../../Hooks/useBatch'
+import { ThemeContext } from '../../context/theme'
 
 const Update = () => {
     const router = useRouter()
+    const theme =useContext(ThemeContext)
   const {batch,isLoading, isError} = useBatch(router?.query?.batchId)
 
   const[batchName, setBatchName] = useState('')
@@ -57,19 +59,19 @@ const Update = () => {
       <h1 className={classes.addHeader}>Update Batch</h1>
       <form className={classes.addForm} onSubmit={handlerFormSubmit}>
         <label htmlFor='batchnumber'> Batch ID</label>
-        <input type='text' placeholder='Enter Batch Number' id='batchnumber' value={batchId} onChange={(e)=>setBatchId(+e.target.value)}  required/>
+        <input className={theme.theme==="light"? classes.addFormInput1 : classes.addFormInput} type='number' placeholder='Enter Batch Number' id='batchnumber' value={batchId} onChange={(e)=>setBatchId(+e.target.value)}  required/>
 
         <label htmlFor='batchname'> Batch Name</label>
-        <input type='text' placeholder='Enter Batch Name' id='batchname' required value={batchName} onChange={(e)=>setBatchName(e.target.value)}   />
+        <input  className={theme.theme==="light"? classes.addFormInput1 : classes.addFormInput} type='text' placeholder='Enter Batch Name' id='batchname' required value={batchName} onChange={(e)=>setBatchName(e.target.value)}   />
 
         <label htmlFor='fishnumber'> Number of Start Fishes </label>
-        <input type='number' placeholder='Enter Number of Start Fishes' id='fishnumber' required value={numberOfFishes} onChange={(e)=>setNumberOfFishes(+e.target.value)}  />
+        <input className={theme.theme==="light"? classes.addFormInput1 : classes.addFormInput} type='number' placeholder='Enter Number of Start Fishes' id='fishnumber' required value={numberOfFishes} onChange={(e)=>setNumberOfFishes(+e.target.value)}  />
 
         <label htmlFor='startdate'>Start Date</label>
-        <input type='date' placeholder='Select Start Date' id='startdate' required value={startDate} onChange={(e)=>setStartDate(e.target.value)}  />
+        <input className={theme.theme==="light"? classes.addFormInput1 : classes.addFormInput} type='date' placeholder='Select Start Date' id='startdate' required value={startDate} onChange={(e)=>setStartDate(e.target.value)}  />
 
         <label htmlFor='Enddate'>End Date</label>
-        <input type='date' placeholder='Select Start Date' id='startdate' value={endDate} onChange={(e)=>setEndDate(e.target.value)}  />
+        <input className={theme.theme==="light"? classes.addFormInput1 : classes.addFormInput} type='date' placeholder='Select Start Date' id='startdate' value={endDate} onChange={(e)=>setEndDate(e.target.value)}  />
      <div className={classes.addbutton}> <Button onClick={() => router.back()} > UPDATE </Button></div>
 
       </form>

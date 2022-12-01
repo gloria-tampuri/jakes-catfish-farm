@@ -19,6 +19,14 @@
     border-radius: 15px;
 }
 
+.MortalityForm1{
+    width:100%;
+    margin: 1rem 0;
+    background-color:rgb(245, 245, 245) ;
+    padding: 2rem 1rem;
+    border-radius: 15px;
+}
+
 .MortalityForm input{
     display: block;
     width: 100%;
@@ -32,6 +40,23 @@
     margin-bottom: 1.5rem;
     color: white;
 }
+
+.MortalityForm1 input{
+    display: block;
+    width: 100%;
+    height: 53%;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    margin-bottom: 1.5rem;
+    color: #343A46;
+    background-color:rgb(245, 245, 245) ;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+   
 
 .addMortality{
     text-align: right;

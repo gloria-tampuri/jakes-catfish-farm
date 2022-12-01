@@ -20,6 +20,15 @@
     border-radius: 15px;
 }
 
+.ExpenditureForm1{
+    width:100%;
+    margin: 1rem 0;
+    border-radius: 15px;
+    background-color:rgb(245, 245, 245) ;
+    padding: 2rem 1rem;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
+}
+
 .ExpenditureForm input{
     display: block;
     width: 100%;
@@ -32,6 +41,20 @@
     background-color: #23272F;
     margin-bottom: 1.5rem;
     color: white;
+}
+
+.ExpenditureForm1 input{
+    display: block;
+    width: 100%;
+    height: 53%;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    color: #23272F;
+    background-color:rgb(245, 245, 245);
+    margin-bottom: 1.5rem;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
 }
 
 .addExpenditure{

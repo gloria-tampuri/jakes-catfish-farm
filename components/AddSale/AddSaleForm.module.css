@@ -15,7 +15,17 @@
     border-radius: 15px;
 }
 
-.SaleForm input{
+.SaleForm1{
+    width:100%;
+    margin: 1rem 0;
+    border-radius: 15px;
+    padding: 2rem 1rem;
+    background-color:rgb(245, 245, 245) ;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.SaleFormInput{
     display: block;
     width: 100%;
     height: 53%;
@@ -26,7 +36,21 @@
     color: #DCD2D2;
     background-color: #23272F;
     margin-bottom: 1.5rem;
-    color: white;
+  
+}
+
+.SaleFormInput1{
+    display: block;
+    width: 100%;
+    height: 53%;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    color: #343A46;
+    background-color:rgb(245, 245, 245) ;
+    margin-bottom: 1.5rem;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
 }
 
 .SaleForm input::placeholder{

@@ -1,13 +1,16 @@
-import React,{useCallback, useEffect, useState} from 'react'
+import React,{useContext, useEffect, useState} from 'react'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import classes from './ExpenditureList.module.css'
 import { format } from 'date-fns'
+import { ThemeContext } from '../../context/theme'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 
 const ExpenditureList = () => {
+
+  const theme = useContext(ThemeContext)
 
   const router = useRouter()
 
@@ -33,7 +36,7 @@ const ExpenditureList = () => {
 
       <div className={classes.List}>
 
-        <table className={classes.expendituresection}>
+        <table className={theme.theme ==='light'?classes.expendituresection1 :classes.expendituresection}>
             <thead>
                 <tr>
                     <th>Date</th>

@@ -1,14 +1,16 @@
-import React,{useState} from 'react'
+import React,{useState, useContext} from 'react'
 import useSWR from 'swr'
 import { useRouter } from 'next/router'
 import classes from './AddExpenditureForm.module.css'
 import {BiArrowBack} from 'react-icons/bi'
+import {ThemeContext} from '../../context/theme'
 
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 const AddExpenditureForm = () => {
 const router=useRouter()
+const theme =useContext(ThemeContext)
   const [expenditureType, setExpenditureType] = useState('')
   const [date, setDate]=useState('')
   const [amount,setAmount]=useState(0)
@@ -48,7 +50,7 @@ const router=useRouter()
          </div>
     <h2>Add Expenditure</h2>
 
-    <form className={classes.ExpenditureForm} onSubmit={onSubmitExpenditureForm}>
+    <form className={theme.theme ==='light'?classes.ExpenditureForm1 :classes.ExpenditureForm} onSubmit={onSubmitExpenditureForm}>
         <input type='text' placeholder='Expenditure Name' value={expenditureType} onChange={(e)=>{setExpenditureType(e.target.value)}}/>
 
         <input type='date'  value={date} onChange={(e)=>{setDate(e.target.value)}}/>

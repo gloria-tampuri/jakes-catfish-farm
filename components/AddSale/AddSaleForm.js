@@ -1,14 +1,15 @@
-import React,{useState} from 'react'
+import React,{useState, useContext} from 'react'
 import useSWR from 'swr'
 import { useRouter } from 'next/router'
 import classes from './AddSaleForm.module.css'
 import {BiArrowBack} from 'react-icons/bi'
+import { ThemeContext } from '../../context/theme'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 
 const AddSaleForm = () => {
-
+  const theme =useContext(ThemeContext)
     const router = useRouter()
     const [customerName, setCustomerName]=useState('')
     const [date, setDate] = useState('')
@@ -58,12 +59,12 @@ const AddSaleForm = () => {
          </div>
             <h2>Add New Sale</h2>
 
-            <form className={classes.SaleForm} onSubmit={onSubmitForm}>
-                <input type='text' placeholder='customer Name' value={customerName} onChange={(e)=>{setCustomerName(e.target.value)}}/>
-                <input type='date'  value={date} onChange={(e)=>{setDate(e.target.value)}}/>
-                <input type='number' placeholder='Amount' value={amount} onChange={(e)=>{setAmount(+e.target.value)}}/>
-                <input type='number' placeholder='kg' value={weight} onChange={(e)=>{setWeight(+e.target.value)}}/>
-                <input type='number' placeholder='Number of fishes'
+            <form className={theme.theme==='light' ?classes.SaleForm1 : classes.SaleForm} onSubmit={onSubmitForm}>
+                <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} type='text' placeholder='customer Name' value={customerName} onChange={(e)=>{setCustomerName(e.target.value)}}/>
+                <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} type='date'  value={date} onChange={(e)=>{setDate(e.target.value)}}/>
+                <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} type='number' placeholder='Amount' value={amount} onChange={(e)=>{setAmount(+e.target.value)}}/>
+                <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} type='number' placeholder='kg' value={weight} onChange={(e)=>{setWeight(+e.target.value)}}/>
+                <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} type='number' placeholder='Number of fishes'
                 value={numberOfFishes} onChange={(e)=>{setNumberOfFishes(+e.target.value)}}/>
 
                <div className={classes.addSale}> <button type='submit'>Add Sale</button> </div>

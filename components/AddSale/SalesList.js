@@ -1,14 +1,15 @@
-import React,{useCallback, useEffect, useState} from 'react'
+import React,{useContext, useEffect, useState} from 'react'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import classes from './SalesList.module.css'
 import { format } from 'date-fns'
+import { ThemeContext } from '../../context/theme'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 const SalesList = () => {
   const router = useRouter()
-
+  const theme = useContext(ThemeContext)
   const[totalAmount, setTotalAmount] =useState(0)
 
   const { data, error } = useSWR(`/api/batch/${router.query.batchId}`, fetcher,{refreshInterval: 1000})
@@ -31,23 +32,8 @@ const SalesList = () => {
          </div>
 
          <div className={classes.List}>
-         {/* <div className={classes.salesection}>
-                <p>Date</p>
-                <p>Cust Name</p>
-                <p>Weight</p>
-                <p>No.Fishes</p>
-                <p>Amount</p>
-            </div>
-          {data && data.sales.map((sale,index)=> <div className={classes.salesection} key={index}>
-                <p>{format( new Date(sale.date), 'dd/yy')}</p>
-                <p>{sale.customerName}</p>
-                <p>{sale.weight}</p>
-                <p>{sale.numberOfFishes}</p>
-                <p>{sale.amount}</p>
-            </div>)} */}
-
-
-<table className={classes.salesection}>
+       
+<table className={theme.theme ==='light' ? classes.salesection1 : classes.salesection}>
             <thead>
                 <tr>
                     <th>Date</th>

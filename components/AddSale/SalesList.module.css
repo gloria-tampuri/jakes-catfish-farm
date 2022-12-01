@@ -28,16 +28,35 @@
     background-color: #343A46;
 }
 
+.salesection1{
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px;
+    overflow: hidden;
+    color: #343A46;
+    background-color:rgb(245, 245, 245) ;
+    padding: 1rem;
+}
 
 .salesection td, .salesection th{
   padding: 8px;
   text-align: center;
 
 }
+
+.salesection1 td, .salesection th{
+    padding: 8px;
+    text-align: center;
+  
+  }
 .salesection tbody tr:nth-child(odd){
    background-color: #087da441;;
 
 }
+.salesection1 tbody tr:nth-child(odd){
+    background-color: #087da441;;
+ 
+ }
 
 /* .salesection tbody tr:nth-child(even){
     background-color: var(--prime-color);

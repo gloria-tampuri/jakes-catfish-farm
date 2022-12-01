@@ -1,5 +1,5 @@
-.batchesList{
-    margin: 5rem 2rem;
+ .batchesList{
+    margin: 2rem 2rem;
 }
 
 .batch{
@@ -12,4 +12,17 @@
     padding: 0.5rem 1rem;
     margin-bottom: 2rem;
     text-decoration: none;
+}
+
+.batch1{
+    display: flex;
+    justify-content: space-around;
+    color: rgb(27, 27, 27);
+    align-items: center;
+    background-color:rgb(245, 245, 245);
+    border-radius: 15px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 2rem;
+    text-decoration: none;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
 }

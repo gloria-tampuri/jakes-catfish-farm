@@ -24,13 +24,6 @@
 } */
 
 .expendituresection{
-    /* margin: 1rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #343A46;
-    padding:1rem;
-    border-radius: 15px; */
     width: 100%;
     border-collapse: collapse;
     border-radius: 15px;
@@ -38,13 +31,31 @@
     background-color: #343A46;
 }
 
+.expendituresection1{
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px;
+    overflow: hidden;
+    color: #343A46;
+    background-color:rgb(245, 245, 245) ;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
+}
+
 
 .expendituresection td, .expendituresection th{
   padding: 8px;
   text-align: center;
-
 }
+.expendituresection1 td, .expendituresection th{
+    padding: 8px;
+    text-align: center;
+  }
 .expendituresection tbody tr:nth-child(odd){
    background-color: #087da441;;
 
 }
+
+.expendituresection1 tbody tr:nth-child(odd){
+    background-color: #087da441;;
+ 
+ }

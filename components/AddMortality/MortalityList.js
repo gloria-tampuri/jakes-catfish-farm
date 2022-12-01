@@ -1,15 +1,16 @@
-import React,{useCallback, useEffect, useState} from 'react'
+import React,{useContext, useEffect, useState} from 'react'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import classes from './MortalityList.module.css'
 import { format } from 'date-fns'
+import { ThemeContext } from '../../context/theme'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 
 const MortalityList = () => {
   const router = useRouter()
-
+  const theme = useContext(ThemeContext)
   const[totalNumber, setTotalNumber] =useState(0)
 
   const { data, error } = useSWR(`/api/batch/${router.query.batchId}`, fetcher,{refreshInterval: 1000})
@@ -31,7 +32,7 @@ const MortalityList = () => {
       </div>
 
       <div className={classes.List}>
-      <table className={classes.mortalitysection}>
+      <table className={theme.theme==='light'?classes.mortalitysection1:classes.mortalitysection}>
             <thead>
                 <tr>
                     <th>Date</th>
