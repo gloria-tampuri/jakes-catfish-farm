@@ -7,9 +7,8 @@ import {AiOutlinePlus} from 'react-icons/ai'
 const AddBatch = () => {
   return (
   <div className={classes.AddBatch}>
-    <Link href='/batch/add' className={classes.addBatchLink}><Button>
-    <AiOutlinePlus/> ADD BATCH
-   </Button></Link>
+    <Link href='/batch/add' className={classes.addBatchLink}><AiOutlinePlus className={classes.plus}/> <h2>ADD BATCH</h2>
+  </Link>
   </div>
   )
 }

@@ -20,8 +20,7 @@ line-height: 1.5;
 -webkit-font-smoothing: antialiased;
 max-width: 500px;
 margin: 0 auto;
-color: white;
-background-color: #23272F;
+
 }
 img, picture, video, canvas, svg {
 display: block;
@@ -32,4 +31,17 @@ font: inherit;
 }
 p, h1, h2, h3, h4, h5, h6 {
 overflow-wrap: break-word;
+}
+.dark{
+  color: white;
+  background-color: #23272F;
+  height: 100vh;
+}
+
+.light{
+  
+    color:#23272F ;
+    background-color:   white;
+    height: 100vh;
+
 }

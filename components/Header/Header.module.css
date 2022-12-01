@@ -2,6 +2,29 @@
     width: 100%;
     font-size:1rem;
     color:var(--prime-color);
-    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.4);
     padding: 1rem 2rem;
 }
+
+ 
+ .forpad{
+     width: 80%;
+     margin: 0 auto;
+     display: flex;
+     justify-content: space-between;
+ }
+ 
+ /* .forpad h1{
+ font-size: 1.2rem;
+ } */
+ 
+ .darkcontrol{
+     display: flex;
+     align-items: center;
+     justify-items: center;
+     gap: 0.5rem;
+     cursor: pointer;
+ }
+ 
+
+ 

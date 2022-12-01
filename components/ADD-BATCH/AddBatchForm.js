@@ -78,7 +78,7 @@ const AddBatchForm = () => {
 
         <label htmlFor='Enddate'>End Date</label>
         <input type='date' placeholder='Select Start Date' id='startdate' value={endDate} onChange={(e)=>setEndDate(e.target.value)}  />
-     <div className={classes.addbutton}> <Button onClick={() => router.back()} > ADD BATCH </Button></div>
+     <div className={classes.addbutton}> <button onClick={() => router.back()} > ADD BATCH </button></div>
 
       </form>
     </div>

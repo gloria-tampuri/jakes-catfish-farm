@@ -40,7 +40,7 @@ const MortalityList = () => {
             </thead>
             <tbody>
             {data && data.mortality.map((mortality,index)=> <tr  key={index}>
-                 <td>{format( new Date(mortality.date), 'dd/MM/yy')}</td>
+            <td>{mortality.date}</td>
                  <td>{mortality.number}</td>
 
              </tr>
