@@ -30,6 +30,7 @@
     color: #DCD2D2;
     background-color: #343A46;
     margin-bottom: 1.5rem;
+    -webkit-appearance: none;   
 }
 
 .addFormInput1{
