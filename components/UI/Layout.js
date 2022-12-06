@@ -5,7 +5,7 @@ import { ThemeContext } from '../../context/theme'
 
 const Layout = ({children}) => {
     const theme =useContext(ThemeContext)
-    console.log(theme);
+    
     
   return (
     <div className={theme.theme}>

@@ -35,7 +35,7 @@ const Update = () => {
     batchName:batchName,
     batchId:batchId,
     startDate:startDate,
-    numberOfFishes:startDate,
+    numberOfFishes:numberOfFishes,
     endDate:endDate
     }
   
@@ -49,7 +49,11 @@ const Update = () => {
       body: (JSON.stringify(updateData))
      })
 
-    
+   
+
+    if(response.ok){
+      return router.back()
+    }
   }
 
   return (
@@ -72,7 +76,7 @@ const Update = () => {
 
         <label htmlFor='Enddate'>End Date</label>
         <input className={theme.theme==="light"? classes.addFormInput1 : classes.addFormInput} type='date' placeholder='Select Start Date' id='startdate' value={endDate} onChange={(e)=>setEndDate(e.target.value)}  />
-     <div className={classes.addbutton}> <Button onClick={() => router.back()} > UPDATE </Button></div>
+     <div className={classes.addbutton}> <Button> UPDATE </Button></div>
 
       </form>
     </div>

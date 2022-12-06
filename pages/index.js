@@ -5,8 +5,7 @@ export default function Home() {
   return (
     <div className='dark'>
   <Head>
-    <title>Homewell Ventures</title>
-  <link rel="manifest" href="/manifest.json" />       
+        
   </Head>
   </div>
   )
