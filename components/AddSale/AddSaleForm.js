@@ -4,11 +4,16 @@ import { useRouter } from 'next/router'
 import classes from './AddSaleForm.module.css'
 import {BiArrowBack} from 'react-icons/bi'
 import { ThemeContext } from '../../context/theme'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 
 const AddSaleForm = () => {
+  const notify = () => toast.success("New Sale Added",{
+    position:'top-center',autoClose: 3000,
+  });
   const theme =useContext(ThemeContext)
     const router = useRouter()
     const [customerName, setCustomerName]=useState('')
@@ -37,7 +42,8 @@ const AddSaleForm = () => {
                 weight,
                 numberOfFishes
               }
-              
+            
+            
           }
     
         
@@ -67,7 +73,8 @@ const AddSaleForm = () => {
                 <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} type='number' placeholder='Number of fishes'
                 value={numberOfFishes} onChange={(e)=>{setNumberOfFishes(+e.target.value)}}/>
 
-               <div className={classes.addSale}> <button type='submit'>Add Sale</button> </div>
+               <div className={classes.addSale}> <button type='submit' onClick={notify}>Add Sale</button> </div>
+               <ToastContainer />
             </form>
         </div>
     )

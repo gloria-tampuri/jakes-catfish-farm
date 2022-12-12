@@ -5,11 +5,15 @@ import Button from '../UI/Button'
 import {BiArrowBack} from 'react-icons/bi'
 import { setDate } from 'date-fns'
 import { ThemeContext } from '../../context/theme'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddBatchForm = () => {
   const router = useRouter()
   const theme =useContext(ThemeContext)
-
+  const notify = () => toast.success("Batch Added!",{
+    position:'top-center',
+  });
   const[batchName, setBatchName] = useState('')
   const[batchId,SetBatchId]=useState(0)
   const[startDate, setStartDate]= useState('')
@@ -20,41 +24,38 @@ const AddBatchForm = () => {
   const handlerFormSubmit = async (e) => {
     e.preventDefault()
 
-      setBatchName('')
-      SetBatchId('')
-      setStartDate('')
-      setNumberofFishes('')
-      setEndDate('')
-
-   
-
-    
     const data = {
       batchName:  batchName,
       batchId:batchId,
-     startDate:startDate,
-     endDate:endDate,
-     numberOfFishes:numberofFishes,
+      startDate:startDate,
+      endDate:endDate,
+      numberOfFishes:numberofFishes,
      sales:[
-      
+       
      ],
      expenditure:[
-      
-     ],
-     mortality:[
+       
+    ],
+    mortality:[
       
     ],
-
-    }
     
-     const response = await fetch("/api/batch",{
-      method: "POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body: (JSON.stringify(data))
-     })
-     router.push('/')
+  }
+ 
+  
+  const response = await fetch("/api/batch",{
+    method: "POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body: (JSON.stringify(data))
+  })
+  setBatchName('')
+  SetBatchId('')
+  setStartDate('')
+  setNumberofFishes('')
+  setEndDate('')
+  router.push('/')
     
   }
 
@@ -63,6 +64,7 @@ const AddBatchForm = () => {
 
   return (
     <div >
+      <ToastContainer/>
       <BiArrowBack className={classes.back} onClick={() => router.back()}/>
       <h1 className={classes.addHeader}>Create New Batch</h1>
       <form className={classes.addForm} onSubmit={handlerFormSubmit}>
@@ -80,7 +82,7 @@ const AddBatchForm = () => {
 
         <label htmlFor='Enddate'>End Date</label>
         <input className={theme.theme==="light"? classes.addFormInput1 : classes.addFormInput} type='date' placeholder='Select Start Date' id='startdate' value={endDate} onChange={(e)=>setEndDate(e.target.value)}  />
-     <div className={classes.addbutton}> <button onClick={() => router.back()} > ADD BATCH </button></div>
+     <div className={classes.addbutton}> <button onClick={notify}> ADD BATCH </button></div>
 
       </form>
     </div>

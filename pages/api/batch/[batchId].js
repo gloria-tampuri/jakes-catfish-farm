@@ -26,7 +26,7 @@ export default async function(req,res){
     const batchCollection = await connectedDatabase()
     const updatedBatch = await batchCollection.findOneAndUpdate(
         {_id:  ObjectId(batchId)},
-        {$set : {...req.body}
+        {$push : {...req.body}
     })
 
     res.status(200).json({

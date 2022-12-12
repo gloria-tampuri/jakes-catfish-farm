@@ -45,7 +45,7 @@ const SalesList = () => {
             </thead>
             <tbody>
             {data && data.sales.map((sale,index)=> <tr  key={index}>
-                 <td>{format( new Date(sale.date), 'dd/MM/yy')}</td>
+                 <td>{sale.date}</td>
                  <td>{sale.customerName}</td>
                  <td>{sale.weight}</td>
                  <td>{sale.numberOfFishes}</td>

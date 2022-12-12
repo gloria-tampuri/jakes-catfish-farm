@@ -4,11 +4,18 @@ import useSWR from 'swr'
 import classes from './AddMortality.module.css'
 import { BiArrowBack } from 'react-icons/bi'
 import { ThemeContext } from '../../context/theme'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 
 const AddMortalityForm = () => {
+
+    const notify = () => toast.success("New Mortality Added",{
+        position:'top-center',autoClose: 3000,
+      });
+
     const router = useRouter()
     const theme = useContext(ThemeContext)
 
@@ -53,8 +60,9 @@ const AddMortalityForm = () => {
             <form className={theme.theme ==='light'? classes.MortalityForm1:classes.MortalityForm} onSubmit={onSubmitMortalityForm}>
                 <input type='date' value={date} onChange={(e)=>{setDate(e.target.value)}} />
                 <input type='number' placeholder='Number' value={number} onChange={(e)=>{setNumber(e.target.value)}}/>
-                <div className={classes.addMortality}> <button>Add Expenditure</button> </div>
+                <div className={classes.addMortality}> <button type='submit' onClick={notify}>Add Expenditure</button> </div>
             </form>
+            <ToastContainer />
         </div>
 
     )
