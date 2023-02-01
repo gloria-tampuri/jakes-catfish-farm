@@ -15,7 +15,7 @@ const router=useRouter()
 const theme =useContext(ThemeContext)
 
 const notify = () => toast.success("New Expenditure Added",{
-  position:'top-center',autoClose: 3000,
+  position:'top-center',autoClose: 100,
 });
 
   const [expenditureType, setExpenditureType] = useState('')
@@ -32,22 +32,22 @@ const notify = () => toast.success("New Expenditure Added",{
   setAmount('')
   
   const data = {
-      expenditure:
-        {
          expenditureType,
          date,
          amount
-        }
        
     }
   const response = await fetch(`/api/batch/${router.query.batchId}`,{
     method: "PATCH",
     headers:{
-      "Content-Type":"application/json"
+      "Content-Type":"application/json",
+      "action" : "expenditure"
     },
     body: (JSON.stringify(data))
    })
-
+if(response.ok){
+  notify();
+}
   
  }
 
@@ -63,7 +63,7 @@ const notify = () => toast.success("New Expenditure Added",{
         <input type='date'  value={date} onChange={(e)=>{setDate(e.target.value)}}/>
 
         <input type='number' placeholder='Amount'  value={amount} onChange={(e)=>{setAmount(e.target.value)}}/>
-       <div className={classes.addExpenditure}> <button type='submit' onClick={notify}>Add Expenditure</button> </div>
+       <div className={classes.addExpenditure}> <button type='submit'>Add Expenditure</button> </div>
        <ToastContainer/>
     </form>
 </div></div>

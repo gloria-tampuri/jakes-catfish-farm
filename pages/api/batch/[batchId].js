@@ -12,22 +12,43 @@ const connectedDatabase = async () =>{
 
 
 export default async function(req,res){
-  const {batchId}=req.query;
- 
 
    if(req.method==='GET'){
+    const {batchId}=req.query;
     const batchCollection = await connectedDatabase()
    const foundBatch = await batchCollection.findOne({_id: ObjectId(batchId)})
 
    res.status(200).json(foundBatch)
 
    }else if(req.method === 'PATCH'){
-   
+    const {batchId}=req.query;
+   const {action} = req.headers
+
     const batchCollection = await connectedDatabase()
-    const updatedBatch = await batchCollection.findOneAndUpdate(
+   if(action === "sales"){
+    const updatedSales = await batchCollection.updateOne(
         {_id:  ObjectId(batchId)},
-        {$push : {...req.body}
+        {$push : {sales: {...req.body}}
     })
+   }else if(action === "mortality"){
+    const updatedMortality = await batchCollection.updateOne(
+        {_id:  ObjectId(batchId)},
+        {$push : {mortality: {...req.body}}
+    })
+   }
+   else if(action === "expenditure"){
+    const updatedExpenditure = await batchCollection.updateOne(
+        {_id:  ObjectId(batchId)},
+        {$push : {expenditure: {...req.body}}
+    })
+   }
+   
+   else{
+    const updatedBatch = await batchCollection.updateOne(
+        {_id:  ObjectId(batchId)},
+        {$set : {...req.body}
+    })
+   }
 
     res.status(200).json({
         status: 200,

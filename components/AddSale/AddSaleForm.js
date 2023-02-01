@@ -12,7 +12,7 @@ const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 const AddSaleForm = () => {
   const notify = () => toast.success("New Sale Added",{
-    position:'top-center',autoClose: 3000,
+    position:'top-center',autoClose: 1000,
   });
   const theme =useContext(ThemeContext)
     const router = useRouter()
@@ -34,16 +34,11 @@ const AddSaleForm = () => {
        setNumberOfFishes('')
 
         const data = {
-            sales:
-              {
-                customerName,
-                date,
-                amount,
-                weight,
-                numberOfFishes
-              }
-            
-            
+              customerName,
+              date,
+              amount,
+              weight,
+              numberOfFishes
           }
     
         
@@ -51,10 +46,14 @@ const AddSaleForm = () => {
         const response = await fetch(`/api/batch/${router.query.batchId}`,{
             method: "PATCH",
             headers:{
-              "Content-Type":"application/json"
+              "Content-Type":"application/json",
+              "action" : "sales"
             },
             body: (JSON.stringify(data))
            })
+           if(response.ok){
+            notify();
+          }
       
           
     }
@@ -73,7 +72,7 @@ const AddSaleForm = () => {
                 <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} type='number' placeholder='Number of fishes'
                 value={numberOfFishes} onChange={(e)=>{setNumberOfFishes(+e.target.value)}}/>
 
-               <div className={classes.addSale}> <button type='submit' onClick={notify}>Add Sale</button> </div>
+               <div className={classes.addSale}> <button type='submit' >Add Sale</button> </div>
                <ToastContainer />
             </form>
         </div>

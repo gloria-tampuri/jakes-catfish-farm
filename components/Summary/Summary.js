@@ -10,39 +10,48 @@ const Summary = ({batch}) => {
   const[profit, setProfit] =useState(0)
 
   useEffect(() =>{
+   if(batch!==null || batch!==undefined){
     const allAmounts =batch?.sales?.map(sale => +sale.amount).reduce(
       (accumulator, currentValue) => accumulator + currentValue,
       0
     )
+    console.log("Amounts: ", allAmounts);
     const allFishes =batch?.sales?.map(sale => +sale.numberOfFishes).reduce(
       (accumulator, currentValue) => accumulator + currentValue,
       0
     )
+    console.log("numberOfFishes: ", allFishes );
+
     const allMortality =batch?.mortality?.map(mortality => +mortality.number).reduce(
       (accumulator, currentValue) => accumulator + currentValue,
       0
     )
+    console.log("mortality: ",allMortality);
 
     const allExpenditure =batch?.expenditure?.map(expenditure => +expenditure.amount).reduce(
       (accumulator, currentValue) => accumulator + currentValue,
       0
     )
+    console.log("Expenditure: ",allExpenditure);
 
     setTotalAmount(allAmounts)
     setTotalFishesSold(allFishes)
       setTotalmortality(allMortality)
       setTotalExpenditure(allExpenditure)
 
+   }
+   else{return}
   },[batch])
 
 useEffect(()=>{
-  const fishesLeft = batch?.numberOfFishes-totalFishesSold-totalmortality
-  setRemainingFishes(fishesLeft)
+  const fishesLeft = batch?.numberOfFishes - totalFishesSold - totalmortality
+  fishesLeft > 0 ? setRemainingFishes(fishesLeft) : setRemainingFishes(0)
 },[batch,totalFishesSold,totalmortality])
 
 useEffect(()=>{
-  const profit =totalAmount-totalExpenditure
-  setProfit( profit)
+  const profit =totalAmount - totalExpenditure
+  profit > 0 ? setProfit( profit) : setProfit(profit)
+  
 },[totalAmount,totalExpenditure])
 
 
@@ -60,7 +69,7 @@ useEffect(()=>{
             <li>Remaining Fishes: <span>{remainingFishes}</span></li>
         </ul>
 
-<div className={classes.profit}> <h3>{profit >0 ?'Profit :' : 'Loss :'}</h3> <h3>{profit}</h3> </div>
+<div className={classes.profit}> <h3>{profit >0 ?'Profit :' : 'Loss :'}</h3> <h3>{profit.toString()}</h3> </div>
        
     </div>
   )

@@ -13,7 +13,7 @@ const fetcher = (...args) => fetch(...args).then(res => res.json())
 const AddMortalityForm = () => {
 
     const notify = () => toast.success("New Mortality Added",{
-        position:'top-center',autoClose: 3000,
+        position:'top-center',autoClose: 1000,
       });
 
     const router = useRouter()
@@ -32,19 +32,22 @@ const AddMortalityForm = () => {
         setNumber('')
 
         const data={
-            mortality:{
                 date,
                 number
-            }
+           
         }
 
         const response = await fetch(`/api/batch/${router.query.batchId}`,{
             method: "PATCH",
             headers:{
-              "Content-Type":"application/json"
+              "Content-Type":"application/json",
+              "action" : "mortality"
             },
             body: (JSON.stringify(data))
            })
+           if(response.ok){
+            notify();
+          }
       
        
     }
@@ -60,7 +63,7 @@ const AddMortalityForm = () => {
             <form className={theme.theme ==='light'? classes.MortalityForm1:classes.MortalityForm} onSubmit={onSubmitMortalityForm}>
                 <input type='date' value={date} onChange={(e)=>{setDate(e.target.value)}} />
                 <input type='number' placeholder='Number' value={number} onChange={(e)=>{setNumber(e.target.value)}}/>
-                <div className={classes.addMortality}> <button type='submit' onClick={notify}>Add Expenditure</button> </div>
+                <div className={classes.addMortality}> <button >Add Expenditure</button> </div>
             </form>
             <ToastContainer />
         </div>
