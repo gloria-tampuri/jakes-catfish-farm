@@ -61,6 +61,7 @@ useEffect(()=>{
             <li>Batch Number: <span>{batch?.batchId}</span></li>
             <li>Batch Name: <span>{batch?.batchName}</span></li>
             <li>Start Date: <span>{batch?.startDate}</span></li>
+            <li>End Date: <span>{batch?.endDate}</span></li>
             <li>Start Fingerlings Number: <span>{batch?.numberOfFishes}</span></li>
             <li>Number of Fishes Sold: <span>{totalFishesSold}</span></li>
             <li>Total Sales: <span>{totalAmount}</span></li>

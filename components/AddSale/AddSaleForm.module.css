@@ -10,7 +10,7 @@
 .SaleForm{
     width:100%;
     margin: 1rem 0;
-    background-color: #343A46;
+    background-color:var(--prime-color);
     padding: 2rem 1rem;
     border-radius: 15px;
 }

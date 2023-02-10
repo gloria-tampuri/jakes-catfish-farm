@@ -36,7 +36,17 @@ const Update = () => {
     batchId:batchId,
     startDate:startDate,
     numberOfFishes:numberOfFishes,
-    endDate:endDate
+    endDate:endDate,
+    sales: [
+      ...batch.sales,
+  ],
+  expenditure: [
+      ...batch.expenditure,
+  ],
+  mortality: [
+      ...batch.expenditure,
+  ]
+
     }
   
    
