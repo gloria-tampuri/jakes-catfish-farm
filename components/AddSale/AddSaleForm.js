@@ -65,11 +65,11 @@ const AddSaleForm = () => {
             <h2>Add New Sale</h2>
 
             <form className={theme.theme==='light' ?classes.SaleForm1 : classes.SaleForm} onSubmit={onSubmitForm}>
-                <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} type='text' placeholder='customer Name' value={customerName} onChange={(e)=>{setCustomerName(e.target.value)}}/>
-                <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} type='date'  value={date} onChange={(e)=>{setDate(e.target.value)}}/>
-                <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} type='number' placeholder='Amount' value={amount} onChange={(e)=>{setAmount(+e.target.value)}}/>
-                <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} type='number' placeholder='kg' value={weight} onChange={(e)=>{setWeight(+e.target.value)}}/>
-                <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} type='number' placeholder='Number of fishes'
+                <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} type='text' placeholder='customer Name' required value={customerName} onChange={(e)=>{setCustomerName(e.target.value)}}/>
+                <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} required type='date'  value={date} onChange={(e)=>{setDate(e.target.value)}}/>
+                <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} type='number' placeholder='Amount' required value={amount} onChange={(e)=>{setAmount(+e.target.value)}}/>
+                <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} required type='number' placeholder='kg' value={weight} onChange={(e)=>{setWeight(+e.target.value)}}/>
+                <input className={theme.theme === 'light'? classes.SaleFormInput1 : classes.SaleFormInput} required type='number' placeholder='Number of fishes'
                 value={numberOfFishes} onChange={(e)=>{setNumberOfFishes(+e.target.value)}}/>
 
                <div className={classes.addSale}> <button type='submit' >Add Sale</button> </div>

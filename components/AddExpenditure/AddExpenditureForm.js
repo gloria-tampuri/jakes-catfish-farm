@@ -60,9 +60,9 @@ if(response.ok){
     <form className={theme.theme ==='light'?classes.ExpenditureForm1 :classes.ExpenditureForm} onSubmit={onSubmitExpenditureForm}>
         <input type='text' placeholder='Expenditure Name' value={expenditureType} onChange={(e)=>{setExpenditureType(e.target.value)}}/>
 
-        <input type='date'  value={date} onChange={(e)=>{setDate(e.target.value)}}/>
+        <input type='date' required value={date} onChange={(e)=>{setDate(e.target.value)}}/>
 
-        <input type='number' placeholder='Amount'  value={amount} onChange={(e)=>{setAmount(e.target.value)}}/>
+        <input type='number' placeholder='Amount' required value={amount} onChange={(e)=>{setAmount(e.target.value)}}/>
        <div className={classes.addExpenditure}> <button type='submit'>Add Expenditure</button> </div>
        <ToastContainer/>
     </form>

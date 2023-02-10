@@ -61,9 +61,9 @@ const AddMortalityForm = () => {
             <h2>Add Mortality</h2>
 
             <form className={theme.theme ==='light'? classes.MortalityForm1:classes.MortalityForm} onSubmit={onSubmitMortalityForm}>
-                <input type='date' value={date} onChange={(e)=>{setDate(e.target.value)}} />
-                <input type='number' placeholder='Number' value={number} onChange={(e)=>{setNumber(e.target.value)}}/>
-                <div className={classes.addMortality}> <button >Add Expenditure</button> </div>
+                <input type='date' value={date} required onChange={(e)=>{setDate(e.target.value)}} />
+                <input type='number' placeholder='Number' required value={number} onChange={(e)=>{setNumber(e.target.value)}}/>
+                <div className={classes.addMortality}> <button >Add Mortality</button> </div>
             </form>
             <ToastContainer />
         </div>
